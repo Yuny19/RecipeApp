@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RecipeApp</string>
     <string name="recipe_app">Recipe App</string>
+    <string name="ready_in_minutes">Ready In Minutes</string>
 </resources>
