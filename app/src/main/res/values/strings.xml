@@ -2,4 +2,7 @@
     <string name="app_name">RecipeApp</string>
     <string name="recipe_app">Recipe App</string>
     <string name="ready_in_minutes">Ready In Minutes</string>
+    <string name="author">author</string>
+    <string name="to_do">To Do</string>
+    <string name="food_title">Food Title</string>
 </resources>
