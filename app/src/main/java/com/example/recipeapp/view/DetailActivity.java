@@ -2,8 +2,10 @@ package com.example.recipeapp.view;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -55,8 +57,8 @@ public class DetailActivity extends AppCompatActivity {
         call.enqueue(new Callback<DetailResult>() {
             @Override
             public void onResponse(Call<DetailResult> call, Response<DetailResult> response) {
-                Log.d("suummary",response.body().getSummary());
-                        tvSummary.setText(response.body().getSummary());
+                Log.d("suummary", response.body().getSummary());
+                tvSummary.setText(response.body().getSummary());
 
                 liveDetailRecipe.setValue(response.body());
             }
