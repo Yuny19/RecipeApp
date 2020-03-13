@@ -34,7 +34,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void initContent() {
-        ivImage=findViewById(R.id.iv_recipe);
+        ivImage=findViewById(R.id.iv_poster);
         tvTitle=findViewById(R.id.tv_title);
     }
 }
