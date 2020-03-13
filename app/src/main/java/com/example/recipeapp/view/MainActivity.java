@@ -2,6 +2,7 @@ package com.example.recipeapp.view;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
             List<RecipeResult> list = recipeRequest.getResult();
             results.addAll(list);
             adapter.notifyDataSetChanged();
+            progressBar.setVisibility(View.GONE);
         });
         setupRecyclerView();
-        System.out.println(baseUri);
 
         new Thread(() -> {
             while (progressStatus < 100) {
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
     }
 
     private void setupRecyclerView() {
