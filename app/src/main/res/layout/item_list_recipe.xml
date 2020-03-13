@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_list_recipe"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cv_list_recipe"
-    android:layout_marginStart="10dp"
+    android:layout_marginStart="16dp"
     android:layout_marginTop="8dp"
-    android:layout_marginEnd="10dp"
+    android:layout_marginEnd="16dp"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
@@ -14,31 +15,53 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="16dp"
+        android:background="@color/colorWhiteSoft">
 
-        <ImageView
-            android:id="@+id/iv_recipe"
-            android:layout_width="384dp"
-            android:layout_height="368dp"
-            android:layout_marginBottom="8dp"
-            android:contentDescription="@string/todo"
-            android:scaleType="fitXY"
-            android:src="@drawable/img_splashfood" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/mmedium"
             android:text="@string/title"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:padding="18dp"
             android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/iv_recipe"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_below="@+id/tv_title"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/todo"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/img_placeholder" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_recipe"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_below="@id/iv_recipe"/>
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_ready_in_minutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mlight"
+                android:text="@string/ready_in_minutes" />
+        </LinearLayout>
 
     </RelativeLayout>
 
