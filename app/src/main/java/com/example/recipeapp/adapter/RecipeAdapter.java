@@ -66,7 +66,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
             cvListRecipe = itemView.findViewById(R.id.cv_list_recipe);
             tvTitle = itemView.findViewById(R.id.tv_title);
-            ivPoster = itemView.findViewById(R.id.iv_poster);
+            ivPoster = itemView.findViewById(R.id.iv_recipe);
 
         }
     }
