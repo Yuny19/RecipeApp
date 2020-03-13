@@ -9,4 +9,5 @@
     <color name="colorWhiteSoft">#F4F4F4</color>
     <color name="colorGraySoft">#ABABAB</color>
     <color name="colorGray">#707070</color>
+    <color name="transparent">#A3A29D</color>
 </resources>
