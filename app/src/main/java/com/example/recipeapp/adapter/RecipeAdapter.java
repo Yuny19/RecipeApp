@@ -50,6 +50,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         Glide.with(activity).load(url_poster).into(holder.ivPoster);
 
         holder.tvTitle.setText(result.getTitle());
+        holder.tvReadyCook.setText("Ready to be feasted in : "+result.getReadyCook()+" minutes");
 
 
         holder.cvListRecipe.setOnClickListener(new CustomOnItemClickListener(position,(view, position1) -> {
@@ -66,7 +67,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     static class RecipeViewHolder extends RecyclerView.ViewHolder {
         CardView cvListRecipe;
-        TextView tvTitle;
+        TextView tvTitle, tvReadyCook;
         ImageView ivPoster;
 
         RecipeViewHolder(@NonNull View itemView) {
@@ -75,6 +76,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             cvListRecipe = itemView.findViewById(R.id.cv_list_recipe);
             tvTitle = itemView.findViewById(R.id.tv_title);
             ivPoster = itemView.findViewById(R.id.iv_recipe);
+            tvReadyCook=itemView.findViewById(R.id.tv_ready_in_minutes);
 
         }
     }

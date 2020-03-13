@@ -1,8 +1,10 @@
 package com.example.recipeapp.view;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +33,11 @@ public class DetailActivity extends AppCompatActivity {
 
 
     ImageView ivImage;
-    TextView tvTitle;
+    TextView tvTitle, tvSummary;
+    private ProgressBar progressBar;
+    private int progressStatus = 0;
+    private Handler handler = new Handler();
+
 
     public static final String EXTRA_ARTICLE = "details";
 
@@ -49,6 +55,9 @@ public class DetailActivity extends AppCompatActivity {
         call.enqueue(new Callback<DetailResult>() {
             @Override
             public void onResponse(Call<DetailResult> call, Response<DetailResult> response) {
+                Log.d("suummary",response.body().getSummary());
+                        tvSummary.setText(response.body().getSummary());
+
                 liveDetailRecipe.setValue(response.body());
             }
 
@@ -69,14 +78,34 @@ public class DetailActivity extends AppCompatActivity {
 //            String summary=result.getSummary();
         tvTitle.setText(title);
 
+        progressBar = findViewById(R.id.progressbar);
+
+        new Thread(() -> {
+            while (progressStatus < 100) {
+                progressStatus += 1;
+                // Update the progress bar and display the
+                //current value in the text view
+                handler.post(() -> progressBar.setProgress(progressStatus));
+                try {
+                    // Sleep for 200 milliseconds.
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
     }
 
     private void initContent() {
         ivImage = findViewById(R.id.iv_detail_recipe);
         tvTitle = findViewById(R.id.tv_title);
+        tvSummary = findViewById(R.id.tv_content);
     }
 
     public LiveData<DetailResult> getRecipes() {
         return liveDetailRecipe;
     }
+
 }
