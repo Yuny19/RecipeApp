@@ -1,6 +1,7 @@
 package com.example.recipeapp.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.recipeapp.R;
+import com.example.recipeapp.model.DetailResult;
 import com.example.recipeapp.model.RecipeResult;
+import com.example.recipeapp.view.CustomOnItemClickListener;
+import com.example.recipeapp.view.DetailActivity;
 
 import java.util.ArrayList;
 
@@ -22,7 +26,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     private Activity activity;
     private ArrayList<RecipeResult> arrayList;
     private String baseUri;
-    private static final String BASE_URI = "https://spoonacular.com/recipeImages/";
+    public static final String BASE_URI = "https://spoonacular.com/recipeImages/";
 
     public RecipeAdapter(Activity activity, String baseUri, ArrayList<RecipeResult> arrayList) {
         this.activity = activity;
@@ -41,14 +45,18 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(@NonNull RecipeAdapter.RecipeViewHolder holder, int position) {
         RecipeResult result = arrayList.get(position);
+
         String url_poster = BASE_URI + result.getImage();
         Glide.with(activity).load(url_poster).into(holder.ivPoster);
+
         holder.tvTitle.setText(result.getTitle());
-//        holder.cvListRecipe.setOnClickListener(new CustomOnItemClickListener(position,(view, position1) -> {
-//            Intent intent=new Intent(activity, DetailActivity.class);
-////            intent.putExtra(DetailActivity.EXTRA_ARTICLE, result);
-//            activity.startActivity(intent);
-//        }));
+
+
+        holder.cvListRecipe.setOnClickListener(new CustomOnItemClickListener(position,(view, position1) -> {
+            Intent intent=new Intent(activity, DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_ARTICLE, result);
+            activity.startActivity(intent);
+        }));
     }
 
     @Override

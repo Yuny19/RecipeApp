@@ -18,9 +18,9 @@ public class DetailResult {
     private String summary;
 
 
-
     public DetailResult() {
     }
+
 
     public String getId() {
         return id;
